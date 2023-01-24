@@ -1,0 +1,86 @@
+from operator import itemgetter
+main = [('main st.',4,4000), ('elm st.', 1, 1200), ('pine st.', 2, 1600)]
+
+mainlist = list(main)
+
+# a.In ascending order by number of rooms
+sorted_list = sorted(
+    mainlist,
+    key=lambda t: (t[1])
+    )
+print(sorted_list)
+# b.In ascending order of price
+sorted_list2 = sorted(mainlist,key=lambda t : (t[2]))
+print(sorted_list2)
+
+#c. In ascending order of price-per-room
+sorted_list3 = sorted(mainlist, key = lambda t: (t[2]/t[1]))
+#sorted_list4 = sorted(sorted_list3, key = itemgetter(0,2))
+print(sorted_list3)
+#print(sorted_list4)
+
+
+#2. Implement a function pay() that takes as input two arguments: an hourly wage and the
+
+def pay(w,h):
+    if h>40:
+        pay1 = h-40
+        amount=(pay1*w*1.5) + (w*40)
+        return amount
+
+    else:
+        wage = w*h
+        return wage
+print(pay(10,35))
+print(pay(10,45))
+
+#3. You sometimes “binge-watch” series and recently you watched “Scam 1992” in SonyLIV.
+
+ans = 'y'
+L1 = []
+market = ()
+def buy(x):
+    price = 0
+    quant = 0
+    for item in x:
+        if(item[3]=='b' or item[3]=='B'):
+            quant = quant + int(item[1])
+            price = price + int(item[1])*int(item[2])
+    return price      
+   
+
+def sell(x):
+    price = 0
+    quant = 0
+    for item in x:
+        if(item[3]=='s' or item[3]=='S'):
+            quant = quant + int(item[1])
+            price = price + int(item[1])*int(item[2])
+    return price
+
+while (ans=='Y' or ans=='y'):
+    x = str(input("Enter the stock details as (Company initials, quantity, price, status(b, s)): "))
+    x = tuple((a for a in x.split(",")))
+    
+    #if type(x[1]) is str and type(x[1]) is int and type(x[2]) is int and type(x[3]) is str:
+    L1.append(x)
+    #else:
+    #    print("Invalid Input!")
+    ans = input("Do you want to add another stock? y/n: ")    
+
+print(L1)
+print("Buys: ", buy(L1))
+print("Sells: ", sell(L1))
+
+#4. Write a Python program to Create two sets A &B and perform the following
+
+set1 = {2,4,5,8,7,2}
+set2 = {7,5,74,2,1,2}
+print (set1.union(set2))
+print (set1.symmetric_difference(set2))
+print (set1.intersection(set2))
+set2 = set2.union(set1)
+print(set2)
+
+    
+
